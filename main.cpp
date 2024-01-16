@@ -5,9 +5,6 @@
 class Ogrenci {
   private: std::string isim,
   soyisim;
-  std::string * dersadi;
-  std::string * dersadiupt;
-  static int derscount;
   int numarasi;
   public: Ogrenci(std::string isim, std::string soyisim, int numarasi) {
     this -> isim = isim;
@@ -16,7 +13,7 @@ class Ogrenci {
     std::cout << this -> numarasi << " Numarali " << this -> isim << " , " << this -> soyisim << " eklenmistir";
   }
   Ogrenci() {
-    std::cout << "\nDegisken olusturuldu\n";
+    std::cout << "\nConstroctor\n";
   }
   ~Ogrenci() {
     std::cout << "\nDest\n";
@@ -40,7 +37,7 @@ int main() {
     std::cin >> choice;
     switch (choice) {
 
-    case 1:
+    case 1: {
       std::cout << "\nOgrenci Adi :";
       std::cin >> ad;
       std::cout << "\nOgrenci Soyadi :";
@@ -67,7 +64,8 @@ int main() {
           numara
         };
       }
-      break;
+    }
+    break;
 
     case 2: {
 
@@ -88,17 +86,19 @@ int main() {
       delete[] temp;
       temp = nullptr;
       std::cout << "\nOgrenci Silindi ve kapasite dusuruldu\n";
+      break;
     }
-    case 3:
+    case 3: {
       for (i = 0; i < ogrencisayaci; i++) {
         std::cout << i << " . " << ogrenci[i].getisim() << " " << ogrenci[i].getsoyisim() << " " << ogrenci[i].getno() << "\n";
       }
+      break;
+    }
     default:
-      std::cout << "Yanlis Giris";
+      std::cout << "Cikis";
       break;
 
     }
-
   } while (choice != 4);
   delete[] ogrenci;
   ogrenci = nullptr;
